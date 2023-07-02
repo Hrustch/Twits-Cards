@@ -39,7 +39,6 @@ function App() {
 
 
   function handleFollow (id, followers, name){
-    console.log(subs)
     if(!subs.find((follower)=>(follower.name === name))){
       handleSubscribe(id, followers)
       .then(()=>{
