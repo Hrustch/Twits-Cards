@@ -1,10 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import css from './TwitCard.module.css'
 import img from '../../assets/picture1.png'
+import { handleSubscribe } from '../../api/Api'
 
-const TwitCard = (data) => {
-const [tweetNum, setTweetsNum] = useState(data.tweets)
-const [followerNum, setFollowerNum] = useState(data.followers)
+const TwitCard = ({user, funcFollow}) => {
+  const [isFollowed, setIsFollowed] = useState(false);
+
+/*   useEffect(() => {
+    const followers = JSON.parse(localStorage.getItem('Followers')).find((follower) => follower.name === user.name).sub;
+    if(followers){
+      console.log(followers)
+    }
+  }, []); */
+
+  function handleFollow(){
+    funcFollow(user.id, user.followers, user.name)
+    setIsFollowed(true)
+  }
+
   return (
     <div className={css.Card}>
         <img src={img} className={css.TopImg}/>
@@ -12,17 +25,18 @@ const [followerNum, setFollowerNum] = useState(data.followers)
         <div className={css.AvatarSec}>
             <div className={css.Line}></div>
             <div className={css.AvatarLine}>
-                <img className={css.Avatar} src={data.avatar} alt="avatar"/>
+                <img className={css.Avatar} src={user.avatar} alt="avatar"/>
             </div>
         </div>
 
         <div className={css.Numbers}>
-            <p>{tweetNum} TWEETS</p>
-            <p>{followerNum} FOLLOWERS</p>
+            <p>{user.tweets} TWEETS</p>
+            <p>{user.followers} FOLLOWERS</p>
         </div>
-        
+        <p>{isFollowed}</p>
+        <button onClick={()=>{handleFollow()}}>Follow</button>
     </div>
   )
 }
-
+/*  */
 export default TwitCard

@@ -1,3 +1,7 @@
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+
 .Card {
    height: 460px;
    width: 380px;
@@ -50,17 +54,19 @@
 
 }
 
-/* .Avatar{
-
-} */
+.Avatar{
+    border-radius: inherit;
+    width: 80px;
+    height: 80px;
+}
 
 .Numbers{
     text-align: center;
     color: #EBD8FF;
-
-    font-family: Montserrat;
     font-size: 20px;
+    font-family: Montserrat;
+    font-style: normal;
     font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0em;
+    line-height: normal;
+    text-transform: uppercase;
 }
